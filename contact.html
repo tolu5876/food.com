@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #073e3a;
+    }
+    .container {
+        width: 450px;
+        background: #032e2e;
+        padding: 20px;
+        margin: 30px auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    label {
+        display: inline-block;
+        width: 150px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="messages"]{
+        width: 230px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .error {
+        color: rgb(255, 0, 0);
+        font-size: 0.85em;
+        display: none;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+     button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+    } 
+    button:hover {
+        background-color: #357ae8;
+    }
+
+   .cont{
+    transition: cubic-bezier(0.23, 1, 0.320, 1);
+    scroll-behavior: smooth;
+   }
+   </style>
+</head>
+<body>
+    <div class="container">
+    <h2>CONTACT FORM</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName">
+            <div class="error" id="firstNameError">First Name is required</div>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName">
+            <div class="error" id="lastNameError">Last Name is required</div>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email">
+            <div class="error" id="emailError">Email ID is required</div>
+        </div>
+
+        <div class="form-group">
+            <label>Messages</label>
+            <input type="messages" id="messages">
+            <div class="error" id="messagesError">messages is required</div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    
+<script>
+ document.getElementById("registrationForm").addEventListener("submit", function(event) {
+   event.preventDefault();
+
+    let isValid = true;
+
+    function showError(id, condition) {
+        const errorElement = document.getElementById(id);
+        if (condition) {
+            errorElement.style.display = "block";
+            isValid = false;
+        } else {
+            errorElement.style.display = "none";
+        }
+    }
+
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let messages = document.getElementById("messages").value.trim();
+    showError("firstNameError", firstName === "");
+    showError("lastNameError", lastName === "");
+    showError("emailError", email === "");
+    showError("messagesError", messages === "");
+ }) 
+</script> 
+</body>
+</html>
